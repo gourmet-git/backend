@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gourmet
+    username: gourmet
+    password: gourmet
+  jpa:
+    hibernate:
+      ddl-auto: update
