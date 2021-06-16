@@ -1,6 +1,5 @@
 package com.example.backend.recipes.services.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
