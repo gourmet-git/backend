@@ -6,20 +6,48 @@ import com.example.backend.recipes.services.dto.RecipeDTO;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecipeServiceImpl  implements  RecipeService {
 
-    @Autowired
     private Mapper mapper;
 
-    @Autowired
     private RecipeRepository repository;
 
+    @Autowired
+    public RecipeServiceImpl(Mapper m, RecipeRepository r) {
+        this.mapper = m;
+        this.repository = r;
+    }
+
     @Override
+    public RecipeDTO getRecipe(String id) throws Exception {
+        Optional<Recipe> recipe = this.repository.findById(id);
+        if (recipe.isEmpty()) {
+            // TODO: create an specific exception
+            throw new Exception("Recipe not found");
+        }
+        return this.mapper.map(recipe.get(), RecipeDTO.class);
+    }
+
+    @Override
+    @Transactional
     public RecipeDTO createRecipe(RecipeDTO recipe) {
         Recipe model = this.mapper.map(recipe, Recipe.class);
         Recipe created = this.repository.save(model);
         return this.mapper.map(created, RecipeDTO.class);
+    }
+
+    @Override
+    public List<RecipeDTO> getAll() {
+        List<RecipeDTO> recipes = new ArrayList<>();
+        Iterable<Recipe> entities = this.repository.findAll();
+        entities.forEach(e -> recipes.add(this.mapper.map(e, RecipeDTO.class)));
+        return  recipes;
     }
 }

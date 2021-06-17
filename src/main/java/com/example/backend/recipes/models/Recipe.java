@@ -14,6 +14,7 @@ import java.util.List;
 public class Recipe {
 
     @Id
+    @Column(name="recipe_id")
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
@@ -22,8 +23,12 @@ public class Recipe {
     private String source;
     private int servingSize;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "recipes_ingredients")
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name="recipes_ingredients",
+            joinColumns = @JoinColumn(name="recipe_id"),
+            inverseJoinColumns = @JoinColumn(name="ingredient_id")
+    )
     private List<Ingredient> ingredients;
 
     public Recipe() {}
