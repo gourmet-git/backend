@@ -37,7 +37,7 @@ public class RecipeServiceImpl  implements  RecipeService {
 
     @Override
     @Transactional
-    public RecipeDTO createRecipe(RecipeDTO recipe) {
+    public RecipeDTO saveRecipe(RecipeDTO recipe) {
         Recipe model = this.mapper.map(recipe, Recipe.class);
         Recipe created = this.repository.save(model);
         return this.mapper.map(created, RecipeDTO.class);

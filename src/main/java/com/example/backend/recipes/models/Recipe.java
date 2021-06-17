@@ -22,6 +22,7 @@ public class Recipe {
     private String name;
     private String source;
     private int servingSize;
+    private String photo;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
