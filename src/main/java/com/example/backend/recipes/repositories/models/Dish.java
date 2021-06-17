@@ -26,5 +26,6 @@ public class Dish {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     List<Recipe> recipes = new ArrayList<>();
+
     public Dish() {}
 }
