@@ -1,6 +1,7 @@
 package com.example.backend.recipes.controllers;
 
 import com.example.backend.recipes.controllers.bean.ErrorBean;
+import com.example.backend.recipes.exceptions.DishNotFoundException;
 import com.example.backend.recipes.exceptions.RecipeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,7 @@ import java.util.Date;
 @RestController
 public class CustomErrorController {
 
-    @ExceptionHandler(RecipeNotFoundException.class)
-    public final ResponseEntity<ErrorBean> handleNotFoundException(RecipeNotFoundException ex, WebRequest request) {
+    private ResponseEntity<ErrorBean> handleNotFoundException(Exception ex, WebRequest request) {
 
         ErrorBean exceptionResponse = new ErrorBean(
                 new Date(), ex.getMessage(),
@@ -24,5 +24,15 @@ public class CustomErrorController {
                 HttpStatus.NOT_ACCEPTABLE.getReasonPhrase());
 
         return new ResponseEntity<ErrorBean>(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(RecipeNotFoundException.class)
+    public final ResponseEntity<ErrorBean> handleNotFoundException(RecipeNotFoundException ex, WebRequest request) {
+        return this.handleNotFoundException(ex, request);
+    }
+
+    @ExceptionHandler(DishNotFoundException.class)
+    public final ResponseEntity<ErrorBean> handleNotFoundException(DishNotFoundException ex, WebRequest request) {
+        return this.handleNotFoundException(ex, request);
     }
 }

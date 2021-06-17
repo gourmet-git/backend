@@ -1,7 +1,7 @@
 package com.example.backend.recipes.repositories;
 
 import com.example.backend.recipes.repositories.models.Recipe;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RecipeRepository extends PagingAndSortingRepository<Recipe,String> {
+public interface RecipeRepository extends JpaRepository<Recipe,String> {
 }
