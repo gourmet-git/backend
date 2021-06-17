@@ -5,17 +5,29 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 public class RecipeBean {
     private String id;
     private String name;
+
+    @JsonInclude(Include.NON_NULL)
     private String source;
+
+    @JsonInclude(Include.NON_NULL)
     private int servingSize;
+
+    @JsonInclude(Include.NON_NULL)
+    private List<String> instructions = new ArrayList<>();
+
     @JsonIgnoreProperties("recipes")
     private DishBean dish;
-    @JsonInclude(Include.NON_NULL)
-    private List<IngredientBean> ingredients;
+
+ /*   @JsonInclude(Include.NON_NULL)
+    private List<IngredientBean> ingredients = new ArrayList<>();*/
+    private List<String> ingredients = new ArrayList<>();
+
     public  RecipeBean() {}
 }

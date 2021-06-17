@@ -7,4 +7,6 @@ public class IngredientBean {
     private String id;
     private String name;
     private String quantity;
+
+    public IngredientBean() {}
 }
