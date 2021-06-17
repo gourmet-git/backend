@@ -7,6 +7,7 @@ import com.example.backend.recipes.services.RecipePhotoService;
 import com.example.backend.recipes.services.RecipeService;
 import com.example.backend.recipes.services.dto.RecipeDTO;
 import com.github.dozermapper.core.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +18,7 @@ public class RecipePhotoController {
 
     private RecipePhotoService  recipePhotoService;
 
+    @Autowired
     public RecipePhotoController(Mapper m,RecipePhotoService recipePhotoService) {
         this.mapper = m;
         this.recipePhotoService = recipePhotoService;

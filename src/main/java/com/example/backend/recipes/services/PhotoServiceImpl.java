@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Locale;
 
 @Service
 public class PhotoServiceImpl implements PhotoService {
@@ -17,6 +18,9 @@ public class PhotoServiceImpl implements PhotoService {
     @Override
     public String save(MultipartFile multipartFile,String directoryPath) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        fileName = fileName.replace(" ", "_");
+        fileName = fileName.toLowerCase();
+
         Path uploadPath = Paths.get(directoryPath);
 
         if (!Files.exists(uploadPath)) {

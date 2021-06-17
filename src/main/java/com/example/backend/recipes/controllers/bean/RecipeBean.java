@@ -15,6 +15,9 @@ public class RecipeBean {
     private int servingSize;
 
     @JsonInclude(Include.NON_NULL)
+    private String photo;
+
+    @JsonInclude(Include.NON_NULL)
     private List<IngredientBean> ingredients;
 
     public  RecipeBean() {}
