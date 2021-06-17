@@ -16,4 +16,5 @@ public class Ingredient {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String name;
+    private String quantity;
 }
