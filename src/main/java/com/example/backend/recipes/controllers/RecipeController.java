@@ -37,7 +37,7 @@ public class RecipeController {
     @ResponseStatus(HttpStatus.CREATED)
     public RecipeBean createRecipe(@RequestBody RecipeBean recipe) {
         RecipeDTO recipeDTO = this.mapper.map(recipe, RecipeDTO.class);
-        RecipeDTO created =  this.recipeService.createRecipe(recipeDTO);
+        RecipeDTO created =  this.recipeService.saveRecipe(recipeDTO);
         return this.mapper.map(created, RecipeBean.class);
     }
 

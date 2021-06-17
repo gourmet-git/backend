@@ -16,12 +16,11 @@ public interface RecipeService {
      *
      * @param recipe to create
      * */
-    RecipeDTO createRecipe(RecipeDTO recipe);
+    RecipeDTO saveRecipe(RecipeDTO recipe);
 
     /**
      * It retrieves all recipes in the system
      * */
     List<RecipeDTO> getAll();
-
 
 }
