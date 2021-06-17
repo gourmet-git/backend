@@ -1,4 +1,4 @@
-package com.example.backend.recipes.models;
+package com.example.backend.recipes.repositories.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +23,10 @@ public class Recipe {
     private String source;
     private int servingSize;
     private String photo;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "dish_id", nullable = false)
+    private Dish dish;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(

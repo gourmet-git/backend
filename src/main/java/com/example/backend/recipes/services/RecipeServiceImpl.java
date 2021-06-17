@@ -1,8 +1,8 @@
 package com.example.backend.recipes.services;
 
-import com.example.backend.recipes.RecipeRepository;
+import com.example.backend.recipes.repositories.RecipeRepository;
 import com.example.backend.recipes.exceptions.RecipeNotFoundException;
-import com.example.backend.recipes.models.Recipe;
+import com.example.backend.recipes.repositories.models.Recipe;
 import com.example.backend.recipes.services.dto.RecipeDTO;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
