@@ -8,17 +8,12 @@ import java.util.List;
 
 @Data
 public class RecipeBean {
-
     private String id;
     private String name;
     private String source;
     private int servingSize;
-
-    @JsonInclude(Include.NON_NULL)
-    private String photo;
-
+    private DishBean dish;
     @JsonInclude(Include.NON_NULL)
     private List<IngredientBean> ingredients;
-
     public  RecipeBean() {}
 }

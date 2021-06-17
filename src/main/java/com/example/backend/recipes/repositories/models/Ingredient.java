@@ -1,4 +1,4 @@
-package com.example.backend.recipes.models;
+package com.example.backend.recipes.repositories.models;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;

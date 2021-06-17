@@ -12,7 +12,7 @@ public class RecipeDTO{
     private String source;
     private int servingSize;
     private String photo;
-
+    private DishDTO dish;
     private List<IngredientDTO> ingredients;
 
     public RecipeDTO() {}
