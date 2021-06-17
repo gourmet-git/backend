@@ -1,6 +1,7 @@
 package com.example.backend.recipes.services;
 
 import com.example.backend.recipes.RecipeRepository;
+import com.example.backend.recipes.exceptions.RecipeNotFoundException;
 import com.example.backend.recipes.models.Recipe;
 import com.example.backend.recipes.services.dto.RecipeDTO;
 import com.github.dozermapper.core.Mapper;
@@ -29,8 +30,7 @@ public class RecipeServiceImpl  implements  RecipeService {
     public RecipeDTO getRecipe(String id) throws Exception {
         Optional<Recipe> recipe = this.repository.findById(id);
         if (recipe.isEmpty()) {
-            // TODO: create an specific exception
-            throw new Exception("Recipe not found");
+            throw new RecipeNotFoundException("Recipe: "+id+ " not Found" );
         }
         return this.mapper.map(recipe.get(), RecipeDTO.class);
     }
