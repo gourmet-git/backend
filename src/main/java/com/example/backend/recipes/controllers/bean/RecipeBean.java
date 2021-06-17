@@ -11,11 +11,21 @@ import java.util.List;
 public class RecipeBean {
     private String id;
     private String name;
+
+    @JsonInclude(Include.NON_NULL)
     private String source;
+
+    @JsonInclude(Include.NON_NULL)
     private int servingSize;
+
+    @JsonInclude(Include.NON_NULL)
+    private String instructions;
+
     @JsonIgnoreProperties("recipes")
     private DishBean dish;
+
     @JsonInclude(Include.NON_NULL)
     private List<IngredientBean> ingredients;
+
     public  RecipeBean() {}
 }

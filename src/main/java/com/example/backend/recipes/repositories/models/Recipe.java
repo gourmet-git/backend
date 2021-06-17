@@ -22,7 +22,7 @@ public class Recipe {
     private String name;
     private String source;
     private int servingSize;
-    private String photo;
+    private String instructions;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dish_id", nullable = false)

@@ -11,7 +11,7 @@ public class RecipeDTO{
     private String name;
     private String source;
     private int servingSize;
-    private String photo;
+    private String instructions;
     private DishDTO dish;
     private List<IngredientDTO> ingredients;
 
