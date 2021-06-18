@@ -27,16 +27,6 @@ public class Recipe {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dish_id", nullable = false)
     private Dish dish;
-
-//    @ManyToMany(cascade = { CascadeType.ALL })
-//    @JoinTable(
-//            name="recipes_ingredients",
-//            joinColumns = @JoinColumn(name="recipe_id"),
-//            inverseJoinColumns = @JoinColumn(name="ingredient_id")
-//    )
-//    private List<Ingredient> ingredients;
-
-
-
+    
     public Recipe() {}
 }

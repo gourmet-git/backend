@@ -25,8 +25,6 @@ public class RecipeBean {
     @JsonIgnoreProperties("recipes")
     private DishBean dish;
 
- /*   @JsonInclude(Include.NON_NULL)
-    private List<IngredientBean> ingredients = new ArrayList<>();*/
     private List<String> ingredients = new ArrayList<>();
 
     public  RecipeBean() {}
