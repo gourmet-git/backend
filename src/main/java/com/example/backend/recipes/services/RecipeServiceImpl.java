@@ -3,6 +3,7 @@ package com.example.backend.recipes.services;
 import com.example.backend.recipes.repositories.RecipeRepository;
 import com.example.backend.recipes.exceptions.RecipeNotFoundException;
 import com.example.backend.recipes.repositories.models.Recipe;
+import com.example.backend.recipes.services.dto.DishDTO;
 import com.example.backend.recipes.services.dto.RecipeDTO;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class RecipeServiceImpl  implements  RecipeService {
     private Mapper mapper;
 
     private RecipeRepository repository;
+
+    private DishService dishService;
 
     @Autowired
     public RecipeServiceImpl(Mapper m, RecipeRepository r) {
@@ -49,5 +52,12 @@ public class RecipeServiceImpl  implements  RecipeService {
         Iterable<Recipe> entities = this.repository.findAll();
         entities.forEach(e -> recipes.add(this.mapper.map(e, RecipeDTO.class)));
         return  recipes;
+    }
+
+    @Override
+    public RecipeDTO createRecipe(RecipeDTO recipeDTO, String dishId) {
+        DishDTO dishDTO = this.dishService.getDish(dishId);
+        recipeDTO.setDish(dishDTO);
+        return this.saveRecipe(recipeDTO);
     }
 }

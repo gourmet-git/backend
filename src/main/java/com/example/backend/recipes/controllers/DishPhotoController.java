@@ -1,13 +1,14 @@
 package com.example.backend.recipes.controllers;
 
 import com.example.backend.recipes.controllers.bean.DishBean;
-import com.example.backend.recipes.controllers.bean.RecipeBean;
 import com.example.backend.recipes.services.DishPhotoService;
 import com.example.backend.recipes.services.dto.DishDTO;
-import com.example.backend.recipes.services.dto.RecipeDTO;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController

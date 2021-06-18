@@ -5,8 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Entity
@@ -27,6 +25,6 @@ public class Recipe {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dish_id", nullable = false)
     private Dish dish;
-    
+
     public Recipe() {}
 }

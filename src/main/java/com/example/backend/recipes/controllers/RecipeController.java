@@ -3,7 +3,6 @@ package com.example.backend.recipes.controllers;
 import com.example.backend.recipes.controllers.bean.RecipeBean;
 import com.example.backend.recipes.services.DishService;
 import com.example.backend.recipes.services.RecipeService;
-import com.example.backend.recipes.services.dto.DishDTO;
 import com.example.backend.recipes.services.dto.RecipeDTO;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +41,8 @@ public class RecipeController {
     @PostMapping("/dishes/{id}/recipes")
     @ResponseStatus(HttpStatus.CREATED)
     public RecipeBean createRecipe(@PathVariable String id, @RequestBody RecipeBean recipe) {
-        DishDTO dishDTO = this.dishService.getDish(id);
         RecipeDTO recipeDTO = this.mapper.map(recipe, RecipeDTO.class);
-        recipeDTO.setDish(dishDTO);
-        RecipeDTO created =  this.recipeService.saveRecipe(recipeDTO);
+        RecipeDTO created =  this.recipeService.createRecipe(recipeDTO, id);
         return this.mapper.map(created, RecipeBean.class);
     }
 

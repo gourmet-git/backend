@@ -23,4 +23,10 @@ public interface RecipeService {
      * */
     List<RecipeDTO> getAll();
 
+
+    /**
+     * Creates a new recipe tied to a dish
+     * */
+    RecipeDTO createRecipe(RecipeDTO recipeDTO, String dishId);
+
 }
